@@ -75,8 +75,8 @@ court_project/
 ├── manage.py
 └── README.md
 
-## Demo
-
+##  Demo Video
+👉 [Click to watch on loom](https://www.loom.com/share/c865052987a34cf9a184867b84e6bb96?sid=2127747e-e320-41bd-87e5-b3c35340477a) 
 
 
 Create and activate virtual environment
