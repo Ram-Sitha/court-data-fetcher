@@ -76,16 +76,16 @@ court_project/
 └── README.md
 
 Create and activate virtual environment
-  python -m venv venv
-  venv\Scripts\activate   # On Windows
-  Install Django
-  pip install django
+  [python -m venv venv]
+  [venv\Scripts\activate   # On Windows]
+Install Django
+  [pip install django]
 Run migrations
-  python manage.py makemigrations
-  python manage.py migrate
+  [python manage.py makemigrations,
+  python manage.py migrate]
 Start the development server
-  python manage.py runserver
+  [python manage.py runserver]
 Now open your browser and go to:
-  http://127.0.0.1:8000/court_app/
+  [http://127.0.0.1:8000/court_app/]
 
 
