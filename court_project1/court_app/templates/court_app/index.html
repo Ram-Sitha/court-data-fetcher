@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Court Data Fetcher</title>
+    <style>
+        body{
+            font-family:Arial,sans-serif;
+            background-color:#f4f4f4;
+            padding:40px;
+        }
+        .container{
+            max-width:700px;
+            margin:auto;
+            background:#fff;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            font-weight:bold;
+        }
+
+        input[type="text"]{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            margin-top:20px;
+            padding:10px 20px;
+            width:100%;
+            background-color:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+        }
+
+        button:hover{
+            background-color:#0056b3;
+        }
+
+        .result{
+            margin-top:30px;
+            padding:15px;
+            background-color:#e9f7ef;
+            border-left:5px solid #28a745;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:30px;
+        }
+
+        table,th,td{
+            border:1px solid #ccc;
+        }
+
+        th,td{
+            padding:10px;
+            text-align:center;
+        }
+
+        th{
+            background-color:#007bff;
+            color:white;
+        }
+
+        tr:nth-child(even){
+            background-color:#f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Court Case Info</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Fetch Case</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <strong>Result:</strong><br>
+            {{ result|safe }}
+        </div>
+        {% endif %}
+
+        {% if queries %}
+        <h3>Previous Submissions</h3>
+        <table>
+            <tr>
+                <th>Case Type</th>
+                <th>Case Number</th>
+                <th>Filing Year</th>
+                <th>Result</th>
+                <th>Submitted At</th>
+            </tr>
+            {% for q in queries %}
+            <tr>
+                <td>{{q.case_type}}</td>
+                <td>{{q.case_number}}</td>
+                <td>{{q.filing_year}}</td>
+                <td>{{q.raw_response}}</td>
+                <td>{{q.created_at|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
